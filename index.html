@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Melike ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #09050b;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: floatHeart linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Opening */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    background:
+        radial-gradient(circle at center, #35152f 0%, #120813 45%, #050307 100%);
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: appear 2s ease;
+}
+
+.small {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #e9a8c7;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(45px, 9vw, 95px);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #ff9fc9;
+}
+
+.subtitle {
+    font-size: clamp(18px, 3vw, 27px);
+    line-height: 1.7;
+    color: #eadde6;
+    margin-bottom: 40px;
+}
+
+.open-btn {
+    border: 1px solid #ff9fc9;
+    background: rgba(255, 159, 201, 0.08);
+    color: white;
+    padding: 17px 38px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.open-btn:hover {
+    background: #ff9fc9;
+    color: #170912;
+    transform: scale(1.06);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Birthday section */
+.birthday {
+    min-height: 100vh;
+    padding: 100px 25px;
+    display: none;
+    text-align: center;
+    background: linear-gradient(180deg, #120813, #210d1b, #0a050c);
+}
+
+.birthday.show {
+    display: block;
+    animation: appear 1.5s ease;
+}
+
+.birthday-title {
+    font-size: clamp(38px, 7vw, 75px);
+    color: #ffafd0;
+    margin-bottom: 15px;
+}
+
+.birthday-subtitle {
+    color: #dbc4d1;
+    font-size: 19px;
+    margin-bottom: 60px;
+}
+
+/* Cake */
+.cake-area {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 70px;
+}
+
+.cake {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 200px;
+    height: 105px;
+    background: linear-gradient(#f49abd, #c75c88);
+    border-radius: 12px 12px 20px 20px;
+    box-shadow: 0 15px 40px rgba(255, 92, 155, 0.25);
+}
+
+.cake::before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 200px;
+    height: 35px;
+    background: #ffe3ef;
+    border-radius: 50%;
+}
+
+.cake::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 200px;
+    height: 15px;
+    background: #f6bdd3;
+    border-radius: 50%;
+}
+
+.candle {
+    position: absolute;
+    width: 12px;
+    height: 55px;
+    background: #fff1f7;
+    bottom: 125px;
+    border-radius: 5px;
+}
+
+.candle:nth-child(1) {
+    left: 85px;
+}
+
+.candle:nth-child(2) {
+    left: 124px;
+}
+
+.candle:nth-child(3) {
+    left: 163px;
+}
+
+.flame {
+    position: absolute;
+    width: 17px;
+    height: 24px;
+    background: #ffd36b;
+    border-radius: 50% 50% 45% 45%;
+    top: -25px;
+    left: -3px;
+    box-shadow: 0 0 25px #ffae42;
+    animation: flame 0.7s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: scale(1) rotate(-3deg);
+    }
+    to {
+        transform: scale(1.18) rotate(3deg);
+    }
+}
+
+/* Love letter */
+.letter-section {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.letter {
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,159,201,0.25);
+    border-radius: 25px;
+    padding: clamp(30px, 6vw, 60px);
+    text-align: left;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.35);
+}
+
+.letter h2 {
+    text-align: center;
+    color: #ffafd0;
+    font-size: 35px;
+    margin-bottom: 35px;
+    font-weight: normal;
+}
+
+.letter p {
+    color: #eadde6;
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+.signature {
+    text-align: right;
+    color: #ffafd0 !important;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+/* Distance */
+.distance {
+    padding: 100px 25px;
+    text-align: center;
+}
+
+.distance h2 {
+    font-size: 42px;
+    font-weight: normal;
+    color: #ffafd0;
+    margin-bottom: 30px;
+}
+
+.flags {
+    font-size: 55px;
+    margin: 25px;
+}
+
+.distance p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.9;
+    color: #d8c7d1;
+    font-size: 18px;
+}
+
+/* Final */
+.final {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background: radial-gradient(circle, #38162d, #080409 70%);
+}
+
+.final h2 {
+    font-size: clamp(38px, 7vw, 70px);
+    font-weight: normal;
+    color: #ffafd0;
+    margin-bottom: 25px;
+}
+
+.final p {
+    font-size: 21px;
+    color: #eadde6;
+    line-height: 1.8;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #8f7181;
+    font-size: 13px;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    z-index: 100;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .letter p {
+        font-size: 16px;
+    }
+
+    .cake-area {
+        transform: scale(0.85);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="small">A little surprise for someone special</div>
+
+        <h1>
+            Hey, <span>Melike</span> ❤️
+        </h1>
+
+        <p class="subtitle">
+            There is something I have been waiting to tell you...
+            <br>
+            Something made especially for you.
+        </p>
+
+        <button class="open-btn" onclick="openBirthday()">
+            Open Your Surprise ❤️
+        </button>
+    </div>
+</section>
+
+<section class="birthday" id="birthday">
+
+    <h2 class="birthday-title">
+        Happy Birthday, My Love ❤️
+    </h2>
+
+    <p class="birthday-subtitle">
+        Today is all about the beautiful person who makes my world brighter.
+    </p>
+
+    <div class="cake-area">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="cake"></div>
+    </div>
+
+    <div class="letter-section">
+
+        <div class="letter">
+
+            <h2>For My Beautiful Melike</h2>
+
+            <p>
+                My love, today is your special day, but somehow I feel
+                like I am the one who received the greatest gift —
+                the gift of having you in my life.
+            </p>
+
+            <p>
+                Distance may separate Bangladesh and Turkey,
+                but it has never been able to change what I feel for you.
+                Every conversation, every little moment and every memory
+                with you means more to me than I can properly explain.
+            </p>
+
+            <p>
+                I hope this new year of your life brings you beautiful
+                moments, peaceful days, endless reasons to smile,
+                and everything your heart quietly wishes for.
+            </p>
+
+            <p>
+                And I want you to remember something:
+                no matter how far apart we are today,
+                you are always very close to my heart.
+            </p>
+
+            <p>
+                Happy Birthday, Melike.
+                I am grateful that our paths crossed,
+                and I hope we get to celebrate many, many more birthdays
+                together — not through a screen, but side by side.
+            </p>
+
+            <p class="signature">
+                With all my love,<br>
+                Your Rifat ❤️
+            </p>
+
+        </div>
+    </div>
+
+    <div class="distance">
+
+        <h2>Two Countries. One Heart.</h2>
+
+        <div class="flags">
+            🇧🇩 ❤️ 🇹🇷
+        </div>
+
+        <p>
+            Bangladesh to Turkey may be thousands of kilometers apart,
+            but love has never cared about distance.
+            One day, I hope this distance becomes nothing more
+            than a memory we look back on together.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="final">
+
+    <div>
+        <h2>Happy Birthday, Melike ❤️</h2>
+
+        <p>
+            May you always have a reason to smile.<br>
+            May your dreams find their way to you.<br>
+            And may our story have many beautiful chapters ahead.
+        </p>
+
+        <div style="font-size:45px; margin-top:35px;">
+            ❤️ ✨ 🌹 ✨ ❤️
+        </div>
+    </div>
+
+</section>
+
+<div class="footer">
+    Made with love, especially for Melike ❤️
+</div>
+
+<script>
+
+function createHearts() {
+    const container = document.getElementById("hearts");
+
+    const symbols = ["❤️", "💕", "💗", "💖", "♡"];
+
+    for (let i = 0; i < 28; i++) {
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = (7 + Math.random() * 9) + "s";
+        heart.style.animationDelay = Math.random() * 8 + "s";
+        heart.style.fontSize = (12 + Math.random() * 18) + "px";
+
+        container.appendChild(heart);
+    }
+}
+
+function openBirthday() {
+
+    document.getElementById("hero").style.display = "none";
+
+    const birthday = document.getElementById("birthday");
+    birthday.classList.add("show");
+
+    createConfetti();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function createConfetti() {
+
+    const symbols = ["❤️", "✨", "💕", "🌸", "💗"];
+
+    for (let i = 0; i < 90; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.animationDelay = Math.random() * 1.5 + "s";
+        piece.style.fontSize = (10 + Math.random() * 15) + "px";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 4500);
+    }
+}
+
+createHearts();
+
+</script>
+
+</body>
+</html>
