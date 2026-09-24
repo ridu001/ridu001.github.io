@@ -1,21 +1,28 @@
-<!-- Refresh GitHub Pages -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Surprise for My Melike ❤️</title>
+  <title>For My Melike ❤️</title>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #ff5795;
+      --rose: #ffb6d1;
+      --wine: #4b0d2d;
+      --purple: #6f3cc7;
+      --gold: #ffd66b;
+      --text: #fff5f9;
+    }
 
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      color: #fff7fb;
+      color: var(--text);
       font-family: Georgia, "Times New Roman", serif;
-      background: radial-gradient(circle at 15% 15%, #a9366d, transparent 28%),
-                  radial-gradient(circle at 85% 85%, #622b88, transparent 30%),
-                  linear-gradient(135deg, #250818, #721c46 52%, #320a27);
+      background: #250817;
     }
 
     button {
@@ -24,587 +31,805 @@
       font: inherit;
     }
 
-    .hidden { display: none !important; }
-
-    .stars::before {
-      content: "✦  ·  ♡  ·  ✧  ·  ♥  ·  ✦  ·  ♡  ·  ✧  ·  ♥";
+    .background {
       position: fixed;
-      top: 7%;
-      left: 0;
-      width: 100%;
-      color: rgba(255, 223, 239, 0.6);
-      font-size: 1.5rem;
-      letter-spacing: 34px;
-      white-space: nowrap;
-      animation: drift 12s linear infinite;
+      inset: 0;
+      z-index: -5;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 17%, rgba(255, 86, 151, 0.5), transparent 27%),
+        radial-gradient(circle at 88% 79%, rgba(144, 72, 220, 0.44), transparent 30%),
+        linear-gradient(130deg, #260719 0%, #701a48 48%, #2b0a35 100%);
+    }
+
+    .orb {
+      position: absolute;
+      width: 42vw;
+      height: 42vw;
+      border-radius: 50%;
+      filter: blur(75px);
+      opacity: 0.32;
+      animation: floatOrb 13s ease-in-out infinite alternate;
+    }
+
+    .orb.one { top: -15vw; left: -11vw; background: #ff3d92; }
+    .orb.two { right: -15vw; bottom: -16vw; background: #8148ff; animation-delay: -5s; }
+    .orb.three { left: 35%; top: 35%; width: 18vw; height: 18vw; background: #ffcf6c; animation-delay: -8s; }
+
+    @keyframes floatOrb {
+      from { transform: translate(0, 0) scale(0.85); }
+      to { transform: translate(120px, 70px) scale(1.25); }
+    }
+
+    #sparkles, #petals {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
       pointer-events: none;
     }
 
-    @keyframes drift {
-      from { transform: translateX(-10%); }
-      to { transform: translateX(10%); }
+    .sparkle, .petal {
+      position: absolute;
+      top: -10vh;
+      animation: fall linear forwards;
+      filter: drop-shadow(0 3px 8px rgba(255, 68, 143, 0.45));
     }
 
-    /* Opening screen */
-    #intro, #journey {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
+    .sparkle { color: #ffe6a1; }
+    .petal { color: #ff8fbd; }
+
+    @keyframes fall {
+      to {
+        transform: translate(var(--drift), 115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding: 74px 18px;
+      text-align: center;
+      animation: reveal 0.8s ease both;
+    }
+
+    .screen.active {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 22px;
-      text-align: center;
-      background: radial-gradient(circle, rgba(189, 57, 117, 0.65), rgba(30, 4, 20, 0.96));
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      flex-direction: column;
     }
 
-    #intro.hide {
-      opacity: 0;
-      visibility: hidden;
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .intro-card {
-      width: min(720px, 94%);
-      padding: 56px 28px;
+    .glass {
+      width: min(900px, 94vw);
+      padding: clamp(30px, 6vw, 64px);
       border: 1px solid rgba(255,255,255,0.28);
-      border-radius: 32px;
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 22px 70px rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
+      border-radius: 34px;
+      background: rgba(255,255,255,0.11);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.36);
+      backdrop-filter: blur(15px);
     }
 
-    .intro-card .heart {
+    .little-heart {
       display: block;
       margin-bottom: 18px;
-      font-size: 3.6rem;
-      animation: heartbeat 1.4s infinite;
+      font-size: 3.8rem;
+      animation: heartbeat 1.35s ease-in-out infinite;
     }
-
-    h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.08;
-      text-shadow: 0 5px 20px rgba(255,92,156,0.55);
-    }
-
-    .intro-card p {
-      max-width: 530px;
-      margin: 22px auto 30px;
-      color: #ffe0ed;
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-      line-height: 1.75;
-    }
-
-    .main-button {
-      padding: 15px 27px;
-      border-radius: 999px;
-      color: white;
-      background: linear-gradient(135deg, #ff4f91, #a83dd8);
-      box-shadow: 0 9px 25px rgba(255, 65, 147, 0.42);
-      transition: transform 0.25s ease;
-    }
-
-    .main-button:hover { transform: translateY(-4px) scale(1.03); }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
-      20% { transform: scale(1.18); }
-      40% { transform: scale(1); }
+      25% { transform: scale(1.22); }
+      45% { transform: scale(1); }
     }
 
-    /* Flying letter journey */
+    h1 {
+      font-size: clamp(2.7rem, 7.5vw, 5.8rem);
+      line-height: 1.05;
+      text-shadow: 0 5px 25px rgba(255, 81, 151, 0.58);
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 5vw, 4.1rem);
+      line-height: 1.13;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 23px auto 30px;
+      color: #ffe0ec;
+      font-size: clamp(1.05rem, 2.5vw, 1.28rem);
+      line-height: 1.8;
+    }
+
+    .button {
+      padding: 15px 29px;
+      border-radius: 999px;
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff4f92, #a847d6);
+      box-shadow: 0 10px 27px rgba(255, 64, 144, 0.42);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 14px 33px rgba(255, 64, 144, 0.55);
+    }
+
+    .button.gold {
+      color: #70223f;
+      background: linear-gradient(135deg, #ffe08a, #ffaf79);
+      box-shadow: 0 10px 27px rgba(255, 210, 100, 0.28);
+    }
+
+    /* Map journey */
     #journey {
-      display: none;
+      position: relative;
       overflow: hidden;
     }
 
-    #journey.show { display: flex; }
-
-    .map {
+    .map-card {
       position: relative;
-      width: min(1000px, 94vw);
-      height: min(560px, 72vh);
+      width: min(1120px, 96vw);
+      height: min(650px, 76vh);
       overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: 35px;
-      background:
-        radial-gradient(ellipse at 25% 58%, rgba(75, 160, 111, 0.75) 0 13%, transparent 14%),
-        radial-gradient(ellipse at 72% 43%, rgba(74, 155, 103, 0.75) 0 15%, transparent 16%),
-        linear-gradient(135deg, #0e4e78, #1877a5);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 34px;
+      background: #0d365f;
+      box-shadow: 0 26px 75px rgba(0,0,0,0.42);
+    }
+
+    .world-map {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.58;
+      filter: sepia(0.45) saturate(1.3) hue-rotate(295deg) contrast(1.05);
+    }
+
+    .map-shade {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 25%, rgba(17, 8, 39, 0.45));
     }
 
     .map-title {
-      position: absolute;
-      width: 100%;
-      top: 9%;
-      font-size: clamp(1.8rem, 5vw, 3.3rem);
+      position: relative;
+      z-index: 3;
+      padding-top: 55px;
+      font-size: clamp(1.9rem, 5vw, 3.7rem);
+      text-shadow: 0 4px 16px #31062b;
     }
 
-    .country {
+    .country-pin {
       position: absolute;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      color: white;
       font-family: Arial, sans-serif;
       font-weight: bold;
-      text-align: center;
+      text-shadow: 0 2px 7px #29032e;
     }
 
-    .bangladesh { top: 58%; left: 14%; }
-    .turkey { top: 31%; right: 14%; }
-
-    .country span {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 2.7rem;
+    .country-pin span {
+      display: grid;
+      place-items: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 1.7rem;
+      background: rgba(122, 25, 82, 0.88);
+      border: 3px solid #ffd0e2;
+      box-shadow: 0 0 0 8px rgba(255, 111, 172, 0.19);
+      animation: pulsePin 1.6s infinite;
     }
+
+    @keyframes pulsePin {
+      50% { transform: scale(1.13); box-shadow: 0 0 0 17px rgba(255, 111, 172, 0); }
+    }
+
+    .turkey { left: 60%; top: 37%; }
+    .bangladesh { left: 70%; top: 55%; }
 
     .route {
       position: absolute;
-      top: 52%;
-      left: 24%;
-      width: 52%;
-      border-top: 3px dashed rgba(255,255,255,0.75);
-      transform: rotate(-18deg);
+      z-index: 2;
+      top: 49%;
+      left: 62%;
+      width: 10%;
+      border-top: 3px dashed #ffe0a2;
+      transform: rotate(-60deg);
       transform-origin: left;
     }
 
-    .letter-flying {
+    .letter {
       position: absolute;
-      left: 21%;
-      top: 53%;
-      z-index: 2;
-      width: 76px;
-      height: 55px;
+      z-index: 5;
+      left: 69%;
+      top: 52%;
+      width: 74px;
+      height: 54px;
       display: grid;
       place-items: center;
-      color: #9a1f58;
+      color: #9d235c;
       font-family: Arial, sans-serif;
       font-size: 1.5rem;
-      background: #fff6f8;
-      border-radius: 6px;
-      box-shadow: 0 7px 15px rgba(0,0,0,0.3);
+      border-radius: 7px;
+      background: #fff8fa;
+      box-shadow: 0 9px 18px rgba(0,0,0,0.36);
     }
 
-    .letter-flying::after {
+    .letter::after {
       content: "";
       position: absolute;
-      width: 42px;
-      height: 42px;
+      width: 39px;
+      height: 39px;
       top: -2px;
+      border-top: 2px solid #f0a8c5;
+      border-left: 2px solid #f0a8c5;
       transform: rotate(45deg);
-      border-left: 2px solid #e7a4c0;
-      border-top: 2px solid #e7a4c0;
     }
 
-    #journey.fly .letter-flying {
-      animation: flyLetter 3.7s ease-in-out forwards;
+    #journey.active .letter {
+      animation: flyToTurkey 4.5s ease-in-out forwards;
     }
 
-    @keyframes flyLetter {
-      0% { transform: translate(0,0) rotate(-8deg) scale(1); }
-      42% { transform: translate(220px,-135px) rotate(10deg) scale(1.18); }
-      100% { transform: translate(510px,-205px) rotate(-8deg) scale(0.9); }
+    @keyframes flyToTurkey {
+      0% { transform: translate(0,0) rotate(8deg) scale(1); }
+      45% { transform: translate(-45px,-120px) rotate(-12deg) scale(1.18); }
+      100% { transform: translate(-105px,-205px) rotate(6deg) scale(0.88); }
     }
 
-    /* Birthday screen */
-    #surprise {
-      display: none;
-      min-height: 100vh;
-      padding: 68px 18px 85px;
+    /* Birthday welcome */
+    .birthday-card {
+      max-width: 920px;
       text-align: center;
     }
 
-    #surprise.show { display: block; }
-
-    .birthday-title {
-      margin: 10px auto 14px;
-      font-size: clamp(2.7rem, 8vw, 5.6rem);
+    .birthday-card p {
+      max-width: 650px;
+      margin: 25px auto 31px;
+      color: #ffe1ed;
+      font-size: 1.18rem;
+      line-height: 1.85;
     }
 
-    .birthday-subtitle {
+    /* Cake scene */
+    #cakeScreen { justify-content: flex-start; }
+
+    .cake-title { margin-bottom: 9px; }
+
+    .cake-subtitle {
       max-width: 650px;
-      margin: auto;
-      color: #ffd8e8;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 28px;
+      color: #ffe0ed;
       line-height: 1.7;
     }
 
-    .cake-stage {
+    .cake-scene {
       position: relative;
-      width: min(820px, 96vw);
-      min-height: 510px;
-      margin: 38px auto 10px;
+      width: min(1050px, 97vw);
+      min-height: 535px;
       display: flex;
       align-items: end;
       justify-content: center;
-      gap: clamp(12px, 8vw, 90px);
+      gap: clamp(10px, 7vw, 95px);
+      padding: 45px 10px 15px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 32px;
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.26);
+      overflow: hidden;
+    }
+
+    .cake-scene::before {
+      content: "";
+      position: absolute;
+      inset: auto 9% 18px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,193,220,0.48), transparent 68%);
     }
 
     .photo-sticker {
       position: relative;
-      z-index: 1;
-      width: clamp(150px, 25vw, 240px);
-      height: clamp(225px, 38vw, 360px);
+      z-index: 2;
+      width: clamp(145px, 22vw, 245px);
+      height: clamp(235px, 35vw, 365px);
       overflow: hidden;
       border: 8px solid white;
-      border-radius: 48% 48% 42% 42%;
-      background: #ffd7e7;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      border-radius: 47% 47% 40% 40%;
+      background: #ffdae8;
+      box-shadow: 0 16px 31px rgba(0,0,0,0.3);
     }
 
     .photo-sticker img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: 50% 20%;
     }
 
-    .ridu-photo { transform: rotate(-5deg); }
-    .melike-photo { transform: rotate(5deg); }
+    .ridu { transform: rotate(-5deg); }
+    .melike { transform: rotate(5deg); }
 
-    .ridu-photo img { object-position: 50% 20%; }
-    .melike-photo img { object-position: 50% 20%; }
-
-    .sticker-label {
+    .name-tag {
       position: absolute;
-      bottom: 11px;
       left: 50%;
+      bottom: 12px;
       transform: translateX(-50%);
-      padding: 5px 12px;
+      padding: 5px 13px;
       border-radius: 999px;
-      color: #7a1d49;
+      color: #761c49;
       font-family: Arial, sans-serif;
       font-weight: bold;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.88);
     }
 
-    .cake-area {
+    .cake-box {
       position: relative;
       z-index: 3;
-      width: 195px;
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: end;
+      width: 260px;
+      text-align: center;
     }
 
-    .cake {
-      position: relative;
-      width: 172px;
-      height: 115px;
-      border-radius: 18px 18px 34px 34px;
-      background: linear-gradient(#ff9abe 0 28%, #fff1f5 28% 42%, #ef4c91 42% 72%, #ffd4e4 72%);
-      border: 5px solid #fff7fa;
-      box-shadow: 0 11px 18px rgba(0,0,0,0.28);
+    .cake-photo {
+      width: 225px;
+      height: 225px;
+      margin: auto;
+      overflow: hidden;
+      border: 7px solid #fff6fa;
+      border-radius: 50% 50% 24px 24px;
+      background: #ffb2ce;
+      box-shadow: 0 13px 30px rgba(0,0,0,0.32);
     }
 
-    .cake::before {
-      content: "Happy Birthday!";
-      position: absolute;
-      top: 46px;
-      left: 0;
+    .cake-photo img {
       width: 100%;
-      color: #8c164e;
-      font-family: Arial, sans-serif;
-      font-size: 0.78rem;
-      font-weight: bold;
+      height: 100%;
+      object-fit: cover;
     }
 
     .candle {
       position: absolute;
-      top: -94px;
-      width: 16px;
-      height: 66px;
-      border-radius: 7px 7px 2px 2px;
-      background: repeating-linear-gradient(45deg, #fff, #fff 7px, #58d5e8 7px, #58d5e8 14px);
+      top: -74px;
+      left: calc(50% - 9px);
+      z-index: 4;
+      width: 18px;
+      height: 80px;
       border: 2px solid white;
+      border-radius: 9px 9px 3px 3px;
+      background: repeating-linear-gradient(45deg, #fff 0 8px, #50cfe4 8px 16px);
     }
 
     .flame {
       position: absolute;
-      top: -38px;
+      top: -37px;
       left: -8px;
-      width: 30px;
-      height: 43px;
+      width: 32px;
+      height: 45px;
       border-radius: 65% 35% 60% 40%;
-      background: radial-gradient(circle at 45% 68%, #fff5aa 0 22%, #ffc53e 24% 48%, #ff6b24 52%);
-      box-shadow: 0 0 25px #ffc52e;
+      background: radial-gradient(circle at 42% 67%, #fff9ae 0 21%, #ffc537 24% 48%, #ff662e 52%);
+      box-shadow: 0 0 30px #ffca3a;
       transform: rotate(45deg);
       animation: flicker 0.7s infinite alternate;
     }
 
-    .flame.out {
-      animation: flameOut 0.7s forwards;
-    }
-
     @keyframes flicker {
-      to { transform: rotate(45deg) scale(0.82, 1.13); }
+      to { transform: rotate(45deg) scale(0.82, 1.15); }
     }
 
-    @keyframes flameOut {
+    .flame.off { animation: flameOff 0.7s forwards; }
+
+    @keyframes flameOff {
       to { opacity: 0; transform: rotate(45deg) scale(0); }
     }
 
-    .blow-button {
-      margin-top: 25px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      color: #fff;
-      background: #ff4d91;
-      box-shadow: 0 8px 22px rgba(255, 71, 145, 0.4);
-    }
+    .blow-button { margin-top: 22px; }
 
     .puff {
       position: absolute;
+      z-index: 6;
       right: 21%;
-      top: 24%;
-      z-index: 5;
-      color: #fff;
-      font-size: 2rem;
+      top: 20%;
       opacity: 0;
+      font-size: 2.2rem;
     }
 
-    .puff.show { animation: puff 1.5s ease-out forwards; }
+    .puff.show { animation: puffMove 1.5s ease-out forwards; }
 
-    @keyframes puff {
+    @keyframes puffMove {
       0% { opacity: 0; transform: translateX(0) scale(0.4); }
-      30% { opacity: 1; }
-      100% { opacity: 0; transform: translateX(-125px) scale(1.8); }
+      25% { opacity: 1; }
+      100% { opacity: 0; transform: translateX(-170px) scale(1.7); }
     }
 
-    .melike-photo.blow {
-      animation: blowForward 1.3s ease both;
-    }
+    .melike.blow { animation: blowMove 1.3s ease both; }
 
-    @keyframes blowForward {
-      50% { transform: rotate(5deg) translateX(-32px) scale(1.08); }
+    @keyframes blowMove {
+      50% { transform: rotate(5deg) translateX(-35px) scale(1.08); }
       100% { transform: rotate(5deg); }
     }
 
-    .wish-message {
-      max-width: 680px;
-      margin: 24px auto 0;
-      padding: 22px;
+    .after-blow {
+      display: none;
+      max-width: 720px;
+      margin: 28px auto 0;
+      padding: 23px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.13);
       border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      color: #ffe8f1;
+      color: #ffe6f0;
       line-height: 1.8;
-      background: rgba(255,255,255,0.1);
     }
 
-    /* Ending */
-    #ending {
-      display: none;
-      min-height: 100vh;
-      padding: 90px 18px;
-      overflow: hidden;
+    .after-blow.show { display: block; animation: reveal 0.7s ease both; }
+
+    /* Wishes */
+    .wish-grid {
+      width: min(1050px, 96vw);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 35px 0;
+    }
+
+    .wish-card {
+      min-height: 250px;
+      padding: 29px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.27);
+      border-radius: 25px;
+      background: linear-gradient(145deg, rgba(255,174,206,0.24), rgba(118,60,175,0.24));
+      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+    }
+
+    .wish-card span { font-size: 3.1rem; margin-bottom: 16px; }
+    .wish-card p { color: #ffe5ef; line-height: 1.75; }
+
+    /* Letter */
+    .love-letter {
+      width: min(820px, 94vw);
+      padding: clamp(30px, 6vw, 58px);
+      text-align: left;
+      color: #68203e;
+      border-radius: 26px;
+      background: #fff7fa;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.32);
+    }
+
+    .love-letter h2 {
+      margin-bottom: 25px;
+      color: #a6215b;
       text-align: center;
     }
 
-    #ending.show { display: block; }
-
-    .ending-title {
-      font-size: clamp(2.2rem, 6vw, 4.1rem);
+    .love-letter p {
       margin-bottom: 18px;
+      font-size: 1.12rem;
+      line-height: 1.85;
     }
 
+    .signature {
+      margin-top: 26px;
+      color: #a6215b;
+      font-size: 1.35rem;
+      font-style: italic;
+    }
+
+    /* Final hug */
     .run-stage {
       position: relative;
-      width: min(900px, 96vw);
-      height: 430px;
-      margin: 20px auto;
+      width: min(1000px, 96vw);
+      height: 455px;
+      margin-top: 30px;
       overflow: hidden;
-      border-bottom: 4px solid rgba(255,255,255,0.4);
+      border-bottom: 5px solid rgba(255,255,255,0.47);
     }
 
     .runner {
       position: absolute;
       bottom: 0;
-      width: 170px;
-      height: 250px;
+      width: 185px;
+      height: 280px;
       overflow: hidden;
-      border: 7px solid white;
-      border-radius: 48% 48% 42% 42%;
-      background: #ffd7e7;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      border: 8px solid white;
+      border-radius: 47% 47% 40% 40%;
+      background: #ffdae8;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.32);
     }
 
     .runner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top;
+      object-position: 50% 20%;
     }
 
-    .runner-ridu { left: -210px; }
-    .runner-melike { right: -210px; }
+    .runner.ridu-run { left: -230px; }
+    .runner.melike-run { right: -230px; }
 
-    .running .runner-ridu { animation: runRidu 4s ease-in-out forwards; }
-    .running .runner-melike { animation: runMelike 4s ease-in-out forwards; }
+    .running .ridu-run { animation: riduRun 4s ease-in-out forwards; }
+    .running .melike-run { animation: melikeRun 4s ease-in-out forwards; }
 
-    @keyframes runRidu {
-      0%, 18%, 38%, 58%, 78% { transform: translateY(0) rotate(-4deg); }
-      10%, 28%, 48%, 68% { transform: translateY(-16px) rotate(4deg); }
-      100% { left: calc(50% - 168px); transform: rotate(-8deg); }
+    @keyframes riduRun {
+      0%, 20%, 40%, 60%, 80% { transform: translateY(0) rotate(-5deg); }
+      10%, 30%, 50%, 70% { transform: translateY(-18px) rotate(5deg); }
+      100% { left: calc(50% - 182px); transform: rotate(-10deg); }
     }
 
-    @keyframes runMelike {
-      0%, 18%, 38%, 58%, 78% { transform: translateY(0) rotate(4deg); }
-      10%, 28%, 48%, 68% { transform: translateY(-16px) rotate(-4deg); }
-      100% { right: calc(50% - 168px); transform: rotate(8deg); }
+    @keyframes melikeRun {
+      0%, 20%, 40%, 60%, 80% { transform: translateY(0) rotate(5deg); }
+      10%, 30%, 50%, 70% { transform: translateY(-18px) rotate(-5deg); }
+      100% { right: calc(50% - 182px); transform: rotate(10deg); }
     }
 
-    .hug-heart {
+    .hug {
       position: absolute;
-      left: 50%;
       bottom: 125px;
-      z-index: 4;
+      left: 50%;
+      z-index: 5;
       opacity: 0;
-      font-size: 4.4rem;
+      font-size: 5rem;
       transform: translateX(-50%) scale(0);
     }
 
-    .running .hug-heart { animation: hugHeart 1.4s 3.9s ease forwards; }
+    .running .hug { animation: hugPop 1.3s 3.7s ease forwards; }
 
-    @keyframes hugHeart {
+    @keyframes hugPop {
       to { opacity: 1; transform: translateX(-50%) scale(1); }
     }
 
-    .final-message {
-      max-width: 690px;
-      margin: 35px auto 0;
-      color: #ffe0ed;
-      font-size: clamp(1.06rem, 2.5vw, 1.25rem);
+    .final-text {
+      max-width: 760px;
+      margin: 30px auto 0;
+      color: #ffe4ef;
+      font-size: clamp(1.08rem, 2.5vw, 1.28rem);
       line-height: 1.85;
     }
 
-    @media (max-width: 600px) {
-      .cake-stage { min-height: 430px; gap: 4px; }
+    @media (max-width: 700px) {
+      .wish-grid { grid-template-columns: 1fr; }
+      .cake-scene { min-height: 450px; gap: 2px; }
+      .cake-box { transform: scale(0.75); margin: 0 -40px; }
       .photo-sticker { border-width: 5px; }
-      .cake-area { transform: scale(0.78); margin: 0 -24px; }
-      .runner { width: 132px; height: 210px; }
-      @keyframes runRidu {
-        100% { left: calc(50% - 128px); transform: rotate(-8deg); }
+      .turkey { left: 56%; top: 38%; }
+      .bangladesh { left: 72%; top: 57%; }
+      .route { left: 59%; width: 14%; }
+      .letter { left: 70%; top: 54%; transform: scale(0.7); }
+      #journey.active .letter { animation-name: flyToTurkeySmall; }
+
+      @keyframes flyToTurkeySmall {
+        0% { transform: scale(0.7); }
+        50% { transform: translate(-32px,-90px) rotate(-10deg) scale(0.85); }
+        100% { transform: translate(-92px,-165px) rotate(5deg) scale(0.6); }
       }
-      @keyframes runMelike {
-        100% { right: calc(50% - 128px); transform: rotate(8deg); }
-      }
+
+      .runner { width: 140px; height: 225px; }
+      @keyframes riduRun { 100% { left: calc(50% - 136px); transform: rotate(-10deg); } }
+      @keyframes melikeRun { 100% { right: calc(50% - 136px); transform: rotate(10deg); } }
     }
   </style>
 </head>
+
 <body>
-  <div class="stars"></div>
+  <div class="background">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
+  <div id="sparkles"></div>
+  <div id="petals"></div>
 
-  <section id="intro">
-    <div class="intro-card">
-      <span class="heart">❤️</span>
+  <section class="screen active" id="intro">
+    <div class="glass">
+      <span class="little-heart">❤️</span>
       <h1>My Love,<br>I Have a Surprise for You</h1>
-      <p>
-        This little journey was made from Bangladesh to Turkey,
-        with all my love waiting at the end.
+      <p class="lead">
+        A small journey made from my heart in Bangladesh,
+        travelling all the way to you in Turkey.
       </p>
-      <button class="main-button" id="startButton">Open Your Surprise 💌</button>
+      <button class="button" id="startJourney">Open Your Surprise 💌</button>
     </div>
   </section>
 
-  <section id="journey">
-    <div class="map">
-      <h2 class="map-title">A letter is travelling to you…</h2>
-      <div class="country bangladesh"><span>🇧🇩</span>Bangladesh</div>
-      <div class="country turkey"><span>🇹🇷</span>Turkey</div>
+  <section class="screen" id="journey">
+    <div class="map-card">
+      <img class="world-map"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/BlankMap-World.svg/1280px-BlankMap-World.svg.png"
+        alt="World map">
+      <div class="map-shade"></div>
+      <h2 class="map-title">A love letter is travelling to you…</h2>
+      <div class="country-pin turkey"><span>🇹🇷</span>Turkey</div>
+      <div class="country-pin bangladesh"><span>🇧🇩</span>Bangladesh</div>
       <div class="route"></div>
-      <div class="letter-flying">♥</div>
+      <div class="letter">♥</div>
     </div>
   </section>
 
-  <main id="surprise">
-    <h1 class="birthday-title">Happy Birthday,<br>My Melike ❤️</h1>
-    <p class="birthday-subtitle">
-      May your day be as beautiful, gentle, and unforgettable as the happiness you bring into my life.
+  <section class="screen" id="birthday">
+    <div class="glass birthday-card">
+      <span class="little-heart">🎂</span>
+      <h1>Happy Birthday,<br>My Beautiful Melike</h1>
+      <p>
+        Today is all about you — your smile, your dreams, and the beautiful heart
+        that makes my world brighter every single day.
+      </p>
+      <button class="button gold" id="goCake">See Your Birthday Cake ✨</button>
+    </div>
+  </section>
+
+  <section class="screen" id="cakeScreen">
+    <h2 class="cake-title">Make a wish, my love 🎂</h2>
+    <p class="cake-subtitle">
+      Ridu brought a little birthday cake for Melike — now blow the candle and make your wish.
     </p>
 
-    <section class="cake-stage">
-      <div class="photo-sticker ridu-photo">
+    <div class="cake-scene">
+      <div class="photo-sticker ridu">
         <img src="ridu.jpeg.jpeg" alt="Ridu">
-        <span class="sticker-label">Ridu</span>
+        <span class="name-tag">Ridu</span>
       </div>
 
-      <div class="cake-area">
-        <div class="cake">
-          <div class="candle">
-            <div class="flame" id="flame"></div>
-          </div>
+      <div class="cake-box">
+        <div class="candle">
+          <div class="flame" id="flame"></div>
         </div>
-        <button class="blow-button" id="blowButton">Blow the Candle 💨</button>
+        <div class="cake-photo">
+          <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=700&q=85"
+               alt="Birthday cake">
+        </div>
+        <button class="button blow-button" id="blowCandle">Blow the Candle 💨</button>
       </div>
 
-      <div class="photo-sticker melike-photo" id="melikeSticker">
+      <div class="photo-sticker melike" id="melikeCake">
         <img src="melike.jpeg.jpeg" alt="Melike">
-        <span class="sticker-label">Melike</span>
+        <span class="name-tag">Melike</span>
       </div>
 
       <div class="puff" id="puff">💨 ✨</div>
-    </section>
-
-    <div class="wish-message hidden" id="wishMessage">
-      <strong>Make a beautiful wish, my love. 🎂</strong><br>
-      I hope every dream in your heart finds its way to you.
-      No distance can make you less special to me — we will be together soon, Inshallah. ❤️
     </div>
-  </main>
 
-  <section id="ending">
-    <h2 class="ending-title">No matter the distance…</h2>
+    <div class="after-blow" id="afterBlow">
+      <strong>Your wish has flown into the stars! ✨</strong><br>
+      May this year bring you peace, happiness, success, and every dream you deserve.
+      <br><br>
+      <button class="button gold" id="goWishes">Open More Birthday Wishes 💌</button>
+    </div>
+  </section>
+
+  <section class="screen" id="wishes">
+    <h2>More wishes for my Melike</h2>
+
+    <div class="wish-grid">
+      <article class="wish-card">
+        <span>🌸</span>
+        <p>May your life always bloom with peace, joy, and beautiful new beginnings.</p>
+      </article>
+      <article class="wish-card">
+        <span>✨</span>
+        <p>May every dream you quietly carry in your heart find its way to you.</p>
+      </article>
+      <article class="wish-card">
+        <span>💖</span>
+        <p>May you always remember how deeply loved, admired, and special you are to me.</p>
+      </article>
+    </div>
+
+    <button class="button" id="goLetter">Read My Love Letter ❤️</button>
+  </section>
+
+  <section class="screen" id="letterScreen">
+    <div class="love-letter">
+      <h2>My dearest Melike,</h2>
+      <p>
+        Happy Birthday, my love. Even with Bangladesh and Turkey between us,
+        you are never far from my thoughts or my heart.
+      </p>
+      <p>
+        Your smile gives me comfort, your kindness inspires me, and your presence
+        makes even ordinary days feel special. I am proud of you, I believe in you,
+        and I hope you never stop believing in yourself.
+      </p>
+      <p>
+        Distance is only a chapter, not our ending. One day, Inshallah,
+        we will look back at these miles as a beautiful memory — because we will be together soon.
+      </p>
+      <p class="signature">With all my love,<br>Your Ridu ❤️</p>
+      <div style="text-align:center; margin-top:30px;">
+        <button class="button" id="goFinal">See Our Promise 💞</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="final">
+    <h2>Two hearts always find their way ❤️</h2>
 
     <div class="run-stage" id="runStage">
-      <div class="runner runner-ridu">
-        <img src="ridu.jpeg.jpeg" alt="Ridu running toward Melike">
+      <div class="runner ridu-run">
+        <img src="ridu.jpeg.jpeg" alt="Ridu">
       </div>
-      <div class="runner runner-melike">
-        <img src="melike.jpeg.jpeg" alt="Melike running toward Ridu">
+      <div class="runner melike-run">
+        <img src="melike.jpeg.jpeg" alt="Melike">
       </div>
-      <div class="hug-heart">💞</div>
+      <div class="hug">💞</div>
     </div>
 
-    <p class="final-message">
-      Bangladesh and Turkey may be far apart today, but our hearts are already close.
-      Keep believing in us, my Melike. One day this distance will become a beautiful memory,
-      and we will look back at it together — side by side, hand in hand. ❤️
+    <p class="final-text">
+      No matter how far apart Bangladesh and Turkey may feel today,
+      our hearts are already together. Keep smiling, keep dreaming, and keep believing in us.
+      We will be together soon, my love. ❤️
     </p>
   </section>
 
   <script>
-    const intro = document.getElementById("intro");
-    const journey = document.getElementById("journey");
-    const surprise = document.getElementById("surprise");
-    const ending = document.getElementById("ending");
+    const screens = document.querySelectorAll(".screen");
 
-    document.getElementById("startButton").addEventListener("click", () => {
-      intro.classList.add("hide");
-      journey.classList.add("show");
+    function showScreen(id) {
+      screens.forEach(screen => screen.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-      setTimeout(() => journey.classList.add("fly"), 150);
-      setTimeout(() => {
-        journey.classList.remove("show");
-        surprise.classList.add("show");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 4100);
+    document.getElementById("startJourney").addEventListener("click", () => {
+      showScreen("journey");
+      setTimeout(() => showScreen("birthday"), 5100);
     });
 
-    document.getElementById("blowButton").addEventListener("click", function () {
-      document.getElementById("flame").classList.add("out");
+    document.getElementById("goCake").addEventListener("click", () => showScreen("cakeScreen"));
+    document.getElementById("goWishes").addEventListener("click", () => showScreen("wishes"));
+    document.getElementById("goLetter").addEventListener("click", () => showScreen("letterScreen"));
+
+    document.getElementById("blowCandle").addEventListener("click", function () {
+      document.getElementById("flame").classList.add("off");
       document.getElementById("puff").classList.add("show");
-      document.getElementById("melikeSticker").classList.add("blow");
-      document.getElementById("wishMessage").classList.remove("hidden");
+      document.getElementById("melikeCake").classList.add("blow");
+      document.getElementById("afterBlow").classList.add("show");
       this.textContent = "Wish Granted ✨";
       this.disabled = true;
       this.style.opacity = "0.65";
-
-      setTimeout(() => {
-        ending.classList.add("show");
-        document.getElementById("runStage").classList.add("running");
-        ending.scrollIntoView({ behavior: "smooth" });
-      }, 1600);
     });
+
+    document.getElementById("goFinal").addEventListener("click", () => {
+      showScreen("final");
+      setTimeout(() => document.getElementById("runStage").classList.add("running"), 350);
+    });
+
+    function makeParticle(container, icons, className, delay) {
+      setTimeout(() => {
+        const item = document.createElement("span");
+        item.className = className;
+        item.textContent = icons[Math.floor(Math.random() * icons.length)];
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.fontSize = (14 + Math.random() * 21) + "px";
+        item.style.animationDuration = (6 + Math.random() * 7) + "s";
+        item.style.setProperty("--drift", (Math.random() * 240 - 120) + "px");
+        container.appendChild(item);
+        setTimeout(() => item.remove(), 14000);
+      }, delay);
+    }
+
+    setInterval(() => makeParticle(
+      document.getElementById("sparkles"), ["✦", "✨", "♡", "♥"], "sparkle", 0
+    ), 430);
+
+    setInterval(() => makeParticle(
+      document.getElementById("petals"), ["❤", "❀", "♥"], "petal", 0
+    ), 950);
   </script>
 </body>
 </html>
