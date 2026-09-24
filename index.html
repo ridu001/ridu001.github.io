@@ -1,564 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Melike ❤️</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #09050b;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* Floating hearts */
-.hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 5;
-}
-
-.heart {
-    position: absolute;
-    bottom: -50px;
-    font-size: 20px;
-    animation: floatHeart linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Melike ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    15% {
-        opacity: 0.8;
+
+    html {
+      scroll-behavior: smooth;
     }
-    100% {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff7fb;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 168, 200, 0.28), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(255, 110, 160, 0.22), transparent 26%),
+        linear-gradient(135deg, #230919 0%, #5b1536 48%, #210714 100%);
     }
-}
 
-/* Opening */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px;
-    position: relative;
-    background:
-        radial-gradient(circle at center, #35152f 0%, #120813 45%, #050307 100%);
-}
+    .glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.26;
+      pointer-events: none;
+      z-index: -1;
+      animation: glowMove 10s ease-in-out infinite alternate;
+    }
 
-.hero-content {
-    max-width: 850px;
-    animation: appear 2s ease;
-}
+    .glow-one {
+      top: 4%;
+      left: -130px;
+      background: #ff5795;
+    }
 
-.small {
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font-size: 13px;
-    color: #e9a8c7;
-    margin-bottom: 25px;
-}
+    .glow-two {
+      bottom: 0;
+      right: -130px;
+      background: #b46cff;
+      animation-delay: -4s;
+    }
 
-h1 {
-    font-size: clamp(45px, 9vw, 95px);
-    font-weight: normal;
-    margin-bottom: 20px;
-}
+    @keyframes glowMove {
+      from { transform: translate(0, 0) scale(0.9); }
+      to { transform: translate(90px, 55px) scale(1.2); }
+    }
 
-.hero h1 span {
-    color: #ff9fc9;
-}
+    .love-particle {
+      position: fixed;
+      bottom: -45px;
+      pointer-events: none;
+      z-index: 20;
+      animation: floatLove linear forwards;
+      filter: drop-shadow(0 4px 8px rgba(255, 50, 130, 0.5));
+    }
 
-.subtitle {
-    font-size: clamp(18px, 3vw, 27px);
-    line-height: 1.7;
-    color: #eadde6;
-    margin-bottom: 40px;
-}
-
-.open-btn {
-    border: 1px solid #ff9fc9;
-    background: rgba(255, 159, 201, 0.08);
-    color: white;
-    padding: 17px 38px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-.open-btn:hover {
-    background: #ff9fc9;
-    color: #170912;
-    transform: scale(1.06);
-}
-
-@keyframes appear {
-    from {
+    @keyframes floatLove {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
         opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-115vh) translateX(var(--drift)) rotate(360deg) scale(1.25);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      width: min(1040px, 92%);
+      margin: auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .hero-card {
+      max-width: 800px;
+      padding: 54px 28px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 32px;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(14px);
+      animation: appear 1.2s ease both;
+    }
+
+    @keyframes appear {
+      from {
         transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
+        opacity: 0;
+      }
+      to {
         transform: translateY(0);
+        opacity: 1;
+      }
     }
-}
 
-/* Birthday section */
-.birthday {
-    min-height: 100vh;
-    padding: 100px 25px;
-    display: none;
-    text-align: center;
-    background: linear-gradient(180deg, #120813, #210d1b, #0a050c);
-}
-
-.birthday.show {
-    display: block;
-    animation: appear 1.5s ease;
-}
-
-.birthday-title {
-    font-size: clamp(38px, 7vw, 75px);
-    color: #ffafd0;
-    margin-bottom: 15px;
-}
-
-.birthday-subtitle {
-    color: #dbc4d1;
-    font-size: 19px;
-    margin-bottom: 60px;
-}
-
-/* Cake */
-.cake-area {
-    position: relative;
-    width: 260px;
-    height: 260px;
-    margin: 0 auto 70px;
-}
-
-.cake {
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-    width: 200px;
-    height: 105px;
-    background: linear-gradient(#f49abd, #c75c88);
-    border-radius: 12px 12px 20px 20px;
-    box-shadow: 0 15px 40px rgba(255, 92, 155, 0.25);
-}
-
-.cake::before {
-    content: "";
-    position: absolute;
-    top: -25px;
-    left: 0;
-    width: 200px;
-    height: 35px;
-    background: #ffe3ef;
-    border-radius: 50%;
-}
-
-.cake::after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    left: 0;
-    width: 200px;
-    height: 15px;
-    background: #f6bdd3;
-    border-radius: 50%;
-}
-
-.candle {
-    position: absolute;
-    width: 12px;
-    height: 55px;
-    background: #fff1f7;
-    bottom: 125px;
-    border-radius: 5px;
-}
-
-.candle:nth-child(1) {
-    left: 85px;
-}
-
-.candle:nth-child(2) {
-    left: 124px;
-}
-
-.candle:nth-child(3) {
-    left: 163px;
-}
-
-.flame {
-    position: absolute;
-    width: 17px;
-    height: 24px;
-    background: #ffd36b;
-    border-radius: 50% 50% 45% 45%;
-    top: -25px;
-    left: -3px;
-    box-shadow: 0 0 25px #ffae42;
-    animation: flame 0.7s infinite alternate;
-}
-
-@keyframes flame {
-    from {
-        transform: scale(1) rotate(-3deg);
+    .tiny-heart {
+      font-size: 2.2rem;
+      display: inline-block;
+      animation: heartbeat 1.4s ease-in-out infinite;
     }
-    to {
-        transform: scale(1.18) rotate(3deg);
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      20% { transform: scale(1.28); }
+      40% { transform: scale(1); }
     }
-}
 
-/* Love letter */
-.letter-section {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.letter {
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(255,159,201,0.25);
-    border-radius: 25px;
-    padding: clamp(30px, 6vw, 60px);
-    text-align: left;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.35);
-}
-
-.letter h2 {
-    text-align: center;
-    color: #ffafd0;
-    font-size: 35px;
-    margin-bottom: 35px;
-    font-weight: normal;
-}
-
-.letter p {
-    color: #eadde6;
-    font-size: 18px;
-    line-height: 2;
-    margin-bottom: 20px;
-}
-
-.signature {
-    text-align: right;
-    color: #ffafd0 !important;
-    font-style: italic;
-    margin-top: 30px;
-}
-
-/* Distance */
-.distance {
-    padding: 100px 25px;
-    text-align: center;
-}
-
-.distance h2 {
-    font-size: 42px;
-    font-weight: normal;
-    color: #ffafd0;
-    margin-bottom: 30px;
-}
-
-.flags {
-    font-size: 55px;
-    margin: 25px;
-}
-
-.distance p {
-    max-width: 650px;
-    margin: auto;
-    line-height: 1.9;
-    color: #d8c7d1;
-    font-size: 18px;
-}
-
-/* Final */
-.final {
-    min-height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    background: radial-gradient(circle, #38162d, #080409 70%);
-}
-
-.final h2 {
-    font-size: clamp(38px, 7vw, 70px);
-    font-weight: normal;
-    color: #ffafd0;
-    margin-bottom: 25px;
-}
-
-.final p {
-    font-size: 21px;
-    color: #eadde6;
-    line-height: 1.8;
-}
-
-.footer {
-    text-align: center;
-    padding: 25px;
-    color: #8f7181;
-    font-size: 13px;
-}
-
-/* Confetti */
-.confetti {
-    position: fixed;
-    top: -20px;
-    width: 9px;
-    height: 14px;
-    z-index: 100;
-    animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(720deg);
+    h1 {
+      margin: 16px 0;
+      font-size: clamp(2.7rem, 8vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: 1px;
+      text-shadow: 0 5px 24px rgba(255, 66, 138, 0.6);
     }
-}
 
-@media (max-width: 600px) {
+    .hero p {
+      max-width: 590px;
+      margin: 0 auto;
+      color: #ffe2ee;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.8;
+    }
+
+    .scroll-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 24px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.12);
+      transition: 0.3s ease;
+    }
+
+    .scroll-link:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      margin-bottom: 28px;
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      color: #ffe0ed;
+    }
+
+    .section-subtitle {
+      max-width: 650px;
+      margin: -12px auto 40px;
+      text-align: center;
+      color: #ffd6e7;
+      line-height: 1.7;
+    }
+
+    .stickers {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .sticker {
+      width: 210px;
+      min-height: 250px;
+      padding: 22px 15px;
+      border: 4px solid white;
+      border-radius: 32px;
+      text-align: center;
+      color: #5e1837;
+      background: linear-gradient(145deg, #fff4f8, #ffd6e7);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+      transform: rotate(var(--tilt));
+      transition: transform 0.35s ease;
+    }
+
+    .sticker:hover {
+      transform: translateY(-12px) rotate(0deg) scale(1.04);
+    }
+
+    .sticker .face {
+      font-size: 5.8rem;
+      display: block;
+      margin: 8px 0;
+    }
+
+    .sticker h3 {
+      font-family: Arial, sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .between-love {
+      align-self: center;
+      font-size: 3.2rem;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+
+    .letter {
+      max-width: 780px;
+      margin: auto;
+      padding: 42px 30px;
+      border-radius: 24px;
+      color: #61203e;
+      background: #fff8fa;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .letter::before {
+      content: "♥";
+      position: absolute;
+      top: 14px;
+      right: 22px;
+      color: #ff5a97;
+      font-size: 1.8rem;
+    }
+
     .letter p {
-        font-size: 16px;
+      margin-bottom: 18px;
+      font-size: 1.12rem;
+      line-height: 1.85;
     }
 
-    .cake-area {
-        transform: scale(0.85);
+    .signature {
+      margin-top: 28px;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #b51b59;
     }
-}
-</style>
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .memory {
+      min-height: 180px;
+      padding: 24px;
+      display: flex;
+      align-items: end;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(255, 156, 193, 0.31), rgba(121, 49, 101, 0.35));
+      box-shadow: 0 12px 25px rgba(0,0,0,0.17);
+      transition: 0.35s ease;
+    }
+
+    .memory:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(145deg, rgba(255, 185, 212, 0.45), rgba(150, 66, 126, 0.45));
+    }
+
+    .memory span {
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    .distance-card {
+      max-width: 780px;
+      margin: auto;
+      padding: 38px 25px;
+      border-radius: 28px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .flags {
+      margin: 10px 0 20px;
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      letter-spacing: 12px;
+    }
+
+    .distance-card p {
+      max-width: 580px;
+      margin: auto;
+      line-height: 1.8;
+      color: #ffe0ed;
+    }
+
+    footer {
+      padding: 40px 20px 55px;
+      text-align: center;
+      color: #ffd5e7;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .memory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .between-love {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-card {
+        padding: 42px 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
 
-<div class="hearts" id="hearts"></div>
-
-<section class="hero" id="hero">
-    <div class="hero-content">
-        <div class="small">A little surprise for someone special</div>
-
-        <h1>
-            Hey, <span>Melike</span> ❤️
-        </h1>
-
-        <p class="subtitle">
-            There is something I have been waiting to tell you...
-            <br>
-            Something made especially for you.
-        </p>
-
-        <button class="open-btn" onclick="openBirthday()">
-            Open Your Surprise ❤️
-        </button>
-    </div>
-</section>
-
-<section class="birthday" id="birthday">
-
-    <h2 class="birthday-title">
-        Happy Birthday, My Love ❤️
-    </h2>
-
-    <p class="birthday-subtitle">
-        Today is all about the beautiful person who makes my world brighter.
-    </p>
-
-    <div class="cake-area">
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-
-        <div class="cake"></div>
-    </div>
-
-    <div class="letter-section">
-
-        <div class="letter">
-
-            <h2>For My Beautiful Melike</h2>
-
-            <p>
-                My love, today is your special day, but somehow I feel
-                like I am the one who received the greatest gift —
-                the gift of having you in my life.
-            </p>
-
-            <p>
-                Distance may separate Bangladesh and Turkey,
-                but it has never been able to change what I feel for you.
-                Every conversation, every little moment and every memory
-                with you means more to me than I can properly explain.
-            </p>
-
-            <p>
-                I hope this new year of your life brings you beautiful
-                moments, peaceful days, endless reasons to smile,
-                and everything your heart quietly wishes for.
-            </p>
-
-            <p>
-                And I want you to remember something:
-                no matter how far apart we are today,
-                you are always very close to my heart.
-            </p>
-
-            <p>
-                Happy Birthday, Melike.
-                I am grateful that our paths crossed,
-                and I hope we get to celebrate many, many more birthdays
-                together — not through a screen, but side by side.
-            </p>
-
-            <p class="signature">
-                With all my love,<br>
-                Your Ridu ❤️
-            </p>
-
-        </div>
-    </div>
-
-    <div class="distance">
-
-        <h2>Two Countries. One Heart.</h2>
-
-        <div class="flags">
-            🇧🇩 ❤️ 🇹🇷
-        </div>
-
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="tiny-heart">❤️</div>
+        <h1>Happy Birthday,<br>My Melike</h1>
         <p>
-            Bangladesh to Turkey may be thousands of kilometers apart,
-            but love has never cared about distance.
-            One day, I hope this distance becomes nothing more
-            than a memory we look back on together.
+          A little corner of the internet made only for you —
+          filled with love, dreams, and every beautiful feeling you bring into my life.
         </p>
-
+        <a class="scroll-link" href="#letter">Open my letter ↓</a>
+      </div>
     </div>
+  </section>
 
-</section>
+  <section>
+    <div class="container">
+      <h2 class="section-title">Us, in a tiny cute world</h2>
+      <p class="section-subtitle">
+        These are little sticker-style placeholders for now. When you upload both photos,
+        we can make them look more like you and Melike.
+      </p>
 
-<section class="final">
-
-    <div>
-        <h2>Happy Birthday, Melike ❤️</h2>
-
-        <p>
-            May you always have a reason to smile.<br>
-            May your dreams find their way to you.<br>
-            And may our story have many beautiful chapters ahead.
-        </p>
-
-        <div style="font-size:45px; margin-top:35px;">
-            ❤️ ✨ 🌹 ✨ ❤️
+      <div class="stickers">
+        <div class="sticker" style="--tilt: -5deg;">
+          <span class="face">👓🙋🏽‍♂️</span>
+          <h3>Ridu</h3>
         </div>
+
+        <div class="between-love">💞</div>
+
+        <div class="sticker" style="--tilt: 5deg;">
+          <span class="face">🧕💚</span>
+          <h3>Melike</h3>
+        </div>
+      </div>
     </div>
+  </section>
 
-</section>
+  <section id="letter">
+    <div class="container">
+      <h2 class="section-title">A letter for you</h2>
 
-<div class="footer">
-    Made with love, especially for Melike ❤️
-</div>
+      <div class="letter">
+        <p>My dearest Melike,</p>
+        <p>
+          Happy Birthday, my love. Even though there are thousands of kilometers between
+          Bangladesh and Turkey, you are always close to my heart.
+        </p>
+        <p>
+          Your smile makes my world softer, brighter, and more beautiful. I hope this new
+          year of your life brings you peace, laughter, success, and every dream your heart
+          is quietly wishing for.
+        </p>
+        <p>
+          One day, I hope the distance becomes only a memory — and we look back at this
+          time together, hand in hand.
+        </p>
+        <p class="signature">With all my love,<br>Your Ridu ❤️</p>
+      </div>
+    </div>
+  </section>
 
-<script>
+  <section>
+    <div class="container">
+      <h2 class="section-title">Little things I love</h2>
 
-function createHearts() {
-    const container = document.getElementById("hearts");
+      <div class="memory-grid">
+        <div class="memory"><span>✨ Your beautiful smile and kind heart.</span></div>
+        <div class="memory"><span>💌 Every message that makes distance feel smaller.</span></div>
+        <div class="memory"><span>🌙 The future I dream of sharing with you.</span></div>
+      </div>
+    </div>
+  </section>
 
-    const symbols = ["❤️", "💕", "💗", "💖", "♡"];
+  <section>
+    <div class="container">
+      <div class="distance-card">
+        <h2 class="section-title">Two Countries. One Heart.</h2>
+        <div class="flags">🇧🇩 💗 🇹🇷</div>
+        <p>
+          Bangladesh to Turkey may be far apart, but love has never cared about distance.
+          Every day brings us one step closer to the day we can look back at the distance together.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    for (let i = 0; i < 28; i++) {
-        const heart = document.createElement("div");
+  <footer>Made with endless love by Ridu, for Melike ❤️</footer>
 
-        heart.className = "heart";
-        heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+  <script>
+    const loveIcons = ["❤", "✨", "♡", "💖", "✦"];
 
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.animationDuration = (7 + Math.random() * 9) + "s";
-        heart.style.animationDelay = Math.random() * 8 + "s";
-        heart.style.fontSize = (12 + Math.random() * 18) + "px";
+    function createLoveParticle() {
+      const particle = document.createElement("div");
+      particle.className = "love-particle";
+      particle.textContent = loveIcons[Math.floor(Math.random() * loveIcons.length)];
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.fontSize = (16 + Math.random() * 18) + "px";
+      particle.style.animationDuration = (5 + Math.random() * 5) + "s";
+      particle.style.setProperty("--drift", (Math.random() * 160 - 80) + "px");
+      document.body.appendChild(particle);
 
-        container.appendChild(heart);
+      setTimeout(() => particle.remove(), 10000);
     }
-}
 
-function openBirthday() {
-
-    document.getElementById("hero").style.display = "none";
-
-    const birthday = document.getElementById("birthday");
-    birthday.classList.add("show");
-
-    createConfetti();
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function createConfetti() {
-
-    const symbols = ["❤️", "✨", "💕", "🌸", "💗"];
-
-    for (let i = 0; i < 90; i++) {
-
-        const piece = document.createElement("div");
-
-        piece.className = "confetti";
-
-        piece.innerHTML =
-            symbols[Math.floor(Math.random() * symbols.length)];
-
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.animationDelay = Math.random() * 1.5 + "s";
-        piece.style.fontSize = (10 + Math.random() * 15) + "px";
-
-        document.body.appendChild(piece);
-
-        setTimeout(() => {
-            piece.remove();
-        }, 4500);
-    }
-}
-
-createHearts();
-
-</script>
-
+    setInterval(createLoveParticle, 550);
+  </script>
 </body>
 </html>
